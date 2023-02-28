@@ -46,7 +46,7 @@ public class Verify {
 
 	public static void main(String[] args) {
 		
-		Password correctPassword = new Password(1234);
+		Password correctPassword = new Password(1234); //parameters pressPass value called
 		correctPassword.enterPassword();
 	}
 
