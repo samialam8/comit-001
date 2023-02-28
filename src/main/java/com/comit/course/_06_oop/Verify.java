@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 
 class Password {
+	//Attribute
 	int pressPass;
 	int attemptsLeft;
 	
@@ -21,7 +22,7 @@ class Password {
 	void enterPassword() {
 		try (Scanner pass = new Scanner(System.in)) {
 			while (attemptsLeft > 0) {
-				System.out.print("Enter Password: ");
+				System.out.print("Enter four number Password: ");
 				int input = pass.nextInt();
 				
 				if (input == pressPass) {
