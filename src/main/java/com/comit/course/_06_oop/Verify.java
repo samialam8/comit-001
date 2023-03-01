@@ -35,7 +35,6 @@ class Password {
 				
 			}
 			
-			pass.close();
 		}
 		
 	}
