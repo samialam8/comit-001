@@ -1,7 +1,7 @@
 package com.comit.course._06_oop;
 
 class Employee1 {//first step creating attributes or making construction map
-	int id;
+	private int id;
 	String name;
 	double salary;
 	String position;

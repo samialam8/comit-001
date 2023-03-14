@@ -71,7 +71,7 @@ public class MyClass {
 		 emp1.display();
 		 double bonus = emp1.bonusEmployee(8);
 		 System.out.println("bonus: " + bonus);
-		 
+		 //emp1.id;
 
 	}
 
