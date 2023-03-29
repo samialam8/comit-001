@@ -17,12 +17,12 @@ public class _01_JdbcStmtList {
 		
 		String sql = "SELECT * FROM USER";
 		
-		try(Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);) {
-			
-			
+		try(Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);) {
 			
-			ResultSet rs = st.executeQuery(sql);
+			
+		
 			
 			while (rs.next()) {
 				int idUser = rs.getInt("ID_USER");
