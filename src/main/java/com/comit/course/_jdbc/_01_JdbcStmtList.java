@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.comit.course._jdbc.bean.User;
 
@@ -21,11 +22,19 @@ public class _01_JdbcStmtList {
 		
 		List<User> users = new ArrayList<>();
 		
-		String sql = "SELECT * FROM USER";
+		String sql = "SELECT * FROM USER WHERE ID_USER=";
+		
+		String input = null;
+		try(Scanner scan = new Scanner(System.in);) {
+			System.out.print("Enter the idUser: ");
+		input = scan.nextLine();
+		}
 		
 		try(Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);) {
+			ResultSet rs = st.executeQuery(sql + input);) {
+			
+			System.out.println("Query: " + sql + input);
 				
 			while (rs.next()) {
 				
@@ -49,7 +58,9 @@ public class _01_JdbcStmtList {
 				
 				users.add(user);
 				
+				
 			}
+			//System.out.println("Connection Successful!");
 			
 		} catch (SQLException e) {
 			System.err.format("SQL State: %s%n%s", e.getSQLState(),e.getMessage());
