@@ -12,11 +12,11 @@ class MyClass {
 public class ProgramCounter {
 
 	public static void main(String[] args) {
-			MyClass obj1 = new MyClass();
-			
-			MyClass obj2 = new MyClass();
-			
-			MyClass obj3 = new MyClass();
+//			MyClass obj1 = new MyClass();
+//			
+//			MyClass obj2 = new MyClass();
+//			
+//			MyClass obj3 = new MyClass();
 		
 			
 		

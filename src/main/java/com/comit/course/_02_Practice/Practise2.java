@@ -1,6 +1,6 @@
 package com.comit.course._02_Practice;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Practise2 {
 
@@ -22,7 +22,7 @@ public class Practise2 {
 		 * average and result.
 		 */
 
-		Scanner scanner = new Scanner(System.in);
+		//Scanner scanner = new Scanner(System.in);
 		/*
 		 * // Input the enrollment and grades
 		 * System.out.print("Enter the student's enrollment: "); int enrollment =

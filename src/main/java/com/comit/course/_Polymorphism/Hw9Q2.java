@@ -49,9 +49,9 @@ class C1 extends A {
 public class Hw9Q2 {
 
 	public static void main(String[] args) {
-			C1 objc = new C1(101, "Sam", 34);
-			B1 objb = new B1(101);
-			A1 obja = new A1(101, "Sam");
+//			C1 objc = new C1(101, "Sam", 34);
+//			B1 objb = new B1(101);
+//			A1 obja = new A1(101, "Sam");
 			//B objb = new B();
 			
 	}

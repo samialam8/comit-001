@@ -26,7 +26,7 @@ class C extends A {
 public class Hw9Q1 {
 
 	public static void main(String[] args) {
-			C objc = new C();
+			//C objc = new C();
 			//B objb = new B();
 	}
 
