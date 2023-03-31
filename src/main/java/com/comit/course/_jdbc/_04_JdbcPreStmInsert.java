@@ -1,20 +1,19 @@
 package com.comit.course._jdbc;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import com.comit.course._jdbc.bean.User;
 
-public class _03_JdbcStmtList {
+public class _04_JdbcPreStmInsert {
 
 	public static void main(String[] args) {
 		
@@ -26,7 +25,8 @@ public class _03_JdbcStmtList {
 		
 		List<User> users = new ArrayList<>();
 		
-		String sql = "INSERT INTO USER(USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, BIRTH, STATUS) VALUES ";
+		String sql = "INSERT INTO USER(USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, BIRTH, STATUS) "
+				     + "VALUES(?,?,?,?,?,?)";
 		
 		User user = new User();
 				
@@ -56,15 +56,19 @@ public class _03_JdbcStmtList {
 			System.err.format("Error while parsing date: %s%n", e.getMessage());		
 		}
 		
-		sql = sql + "('" + user.getUserName() + "','" + user.getPassword() + "','" + user.getFirstName() + "','" +
-			  user.getLastName() + "','" + formatter.format(user.getBirth()) + "','" + user.getStatus() + "')";	
-		
-		System.out.println("Query: " + sql + input);
+		System.out.println("Query: " + sql);
 		
 		try(Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-			Statement st = con.createStatement();) {
+			PreparedStatement st = con.prepareStatement(sql);) {
 			
-			int row = st.executeUpdate(sql);
+			st.setString(1, user.getUserName());
+			st.setString(2, user.getPassword());
+			st.setString(3, user.getFirstName());
+			st.setString(4, user.getLastName());
+			st.setDate(5, new Date(user.getBirth().getTime()));
+			st.setString(6, user.getStatus());
+			
+			int row = st.executeUpdate();
 			
 			System.out.println("Number of rows affected: " + row);
 				
