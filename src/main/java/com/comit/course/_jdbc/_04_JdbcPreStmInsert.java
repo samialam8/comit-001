@@ -3,7 +3,9 @@ package com.comit.course._jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,13 +55,14 @@ public class _04_JdbcPreStmInsert {
 			user.setStatus(scan.nextLine());
 			
 		} catch (ParseException e) {
-			System.err.format("Error while parsing date: %s%n", e.getMessage());		
+			System.err.format("Error while parsing date: %s%n%n", e.getMessage());	
+			System.exit(-1);
 		}
 		
 		System.out.println("Query: " + sql);
 		
 		try(Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-			PreparedStatement st = con.prepareStatement(sql);) {
+			PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
 			
 			st.setString(1, user.getUserName());
 			st.setString(2, user.getPassword());
@@ -71,6 +74,13 @@ public class _04_JdbcPreStmInsert {
 			int row = st.executeUpdate();
 			
 			System.out.println("Number of rows affected: " + row);
+			
+			try(ResultSet resultSet = st.getGeneratedKeys()) {
+				if (resultSet.first()) {
+					System.out.printf("The ID_USER of new user : %d%n", resultSet.getInt(1));
+					user.setIdUser(resultSet.getInt(1));
+				}
+			}
 				
 			//System.out.println("Connection Successful!");
 			
