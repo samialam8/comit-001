@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 import com.comit.course._jdbc.bean.User;
 
-public class _02_jdbcStmtList {
+public class _02_jdbcpreStmtList {
 	
 	public static void main(String[] args) {
 		
